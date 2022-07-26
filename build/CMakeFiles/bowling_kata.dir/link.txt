@@ -1,0 +1,2 @@
+C:\msys64\mingw64\bin\ar.exe qc libbowling_kata.a CMakeFiles/bowling_kata.dir/src/game.cpp.obj
+C:\msys64\mingw64\bin\ranlib.exe libbowling_kata.a
