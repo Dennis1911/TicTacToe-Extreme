@@ -1,6 +1,6 @@
 #pragma once
 
-enum Modes {human, randomBot, smartBot};
+enum Modes {human = 1, randomBot = 2, smartBot = 3};
 
 class GameManager
 {
@@ -10,7 +10,7 @@ public:
     ~GameManager() {};
 
     int countPlayers();
-    Modes choosePlayers(int);
+    Modes choosePlayers();
     void startGame();
 
 private:
