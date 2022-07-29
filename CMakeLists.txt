@@ -13,11 +13,11 @@ enable_testing()
 add_subdirectory(lib/googletest)
 
 set(Headers
-    src/game.hpp
+    src/GameManager.hpp
 )
 
 set(Sources
-    src/game.cpp
+    src/GameManager.cpp
 )
 
 add_library(${This} STATIC ${Sources} ${Headers})

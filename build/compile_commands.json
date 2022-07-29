@@ -1,8 +1,8 @@
 [
 {
   "directory": "C:/Users/Denni/VSCode/Cpp/TicTacToe-Extreme/build",
-  "command": "C:\\msys64\\mingw64\\bin\\g++.exe   -g -std=gnu++11 -o CMakeFiles\\TicTacToeXtrem.dir\\src\\game.cpp.obj -c C:\\Users\\Denni\\VSCode\\Cpp\\TicTacToe-Extreme\\src\\game.cpp",
-  "file": "C:/Users/Denni/VSCode/Cpp/TicTacToe-Extreme/src/game.cpp"
+  "command": "C:\\msys64\\mingw64\\bin\\g++.exe   -g -std=gnu++11 -o CMakeFiles\\TicTacToeXtrem.dir\\src\\GameManager.cpp.obj -c C:\\Users\\Denni\\VSCode\\Cpp\\TicTacToe-Extreme\\src\\GameManager.cpp",
+  "file": "C:/Users/Denni/VSCode/Cpp/TicTacToe-Extreme/src/GameManager.cpp"
 },
 {
   "directory": "C:/Users/Denni/VSCode/Cpp/TicTacToe-Extreme/build/lib/googletest/googlemock",

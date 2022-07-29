@@ -68,28 +68,28 @@ include CMakeFiles/TicTacToeXtrem.dir/progress.make
 # Include the compile flags for this target's objects.
 include CMakeFiles/TicTacToeXtrem.dir/flags.make
 
-CMakeFiles/TicTacToeXtrem.dir/src/game.cpp.obj: CMakeFiles/TicTacToeXtrem.dir/flags.make
-CMakeFiles/TicTacToeXtrem.dir/src/game.cpp.obj: C:/Users/Denni/VSCode/Cpp/TicTacToe-Extreme/src/game.cpp
-CMakeFiles/TicTacToeXtrem.dir/src/game.cpp.obj: CMakeFiles/TicTacToeXtrem.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\Denni\VSCode\Cpp\TicTacToe-Extreme\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/TicTacToeXtrem.dir/src/game.cpp.obj"
-	C:\msys64\mingw64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/TicTacToeXtrem.dir/src/game.cpp.obj -MF CMakeFiles\TicTacToeXtrem.dir\src\game.cpp.obj.d -o CMakeFiles\TicTacToeXtrem.dir\src\game.cpp.obj -c C:\Users\Denni\VSCode\Cpp\TicTacToe-Extreme\src\game.cpp
+CMakeFiles/TicTacToeXtrem.dir/src/GameManager.cpp.obj: CMakeFiles/TicTacToeXtrem.dir/flags.make
+CMakeFiles/TicTacToeXtrem.dir/src/GameManager.cpp.obj: C:/Users/Denni/VSCode/Cpp/TicTacToe-Extreme/src/GameManager.cpp
+CMakeFiles/TicTacToeXtrem.dir/src/GameManager.cpp.obj: CMakeFiles/TicTacToeXtrem.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\Denni\VSCode\Cpp\TicTacToe-Extreme\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/TicTacToeXtrem.dir/src/GameManager.cpp.obj"
+	C:\msys64\mingw64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/TicTacToeXtrem.dir/src/GameManager.cpp.obj -MF CMakeFiles\TicTacToeXtrem.dir\src\GameManager.cpp.obj.d -o CMakeFiles\TicTacToeXtrem.dir\src\GameManager.cpp.obj -c C:\Users\Denni\VSCode\Cpp\TicTacToe-Extreme\src\GameManager.cpp
 
-CMakeFiles/TicTacToeXtrem.dir/src/game.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/TicTacToeXtrem.dir/src/game.cpp.i"
-	C:\msys64\mingw64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E C:\Users\Denni\VSCode\Cpp\TicTacToe-Extreme\src\game.cpp > CMakeFiles\TicTacToeXtrem.dir\src\game.cpp.i
+CMakeFiles/TicTacToeXtrem.dir/src/GameManager.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/TicTacToeXtrem.dir/src/GameManager.cpp.i"
+	C:\msys64\mingw64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E C:\Users\Denni\VSCode\Cpp\TicTacToe-Extreme\src\GameManager.cpp > CMakeFiles\TicTacToeXtrem.dir\src\GameManager.cpp.i
 
-CMakeFiles/TicTacToeXtrem.dir/src/game.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/TicTacToeXtrem.dir/src/game.cpp.s"
-	C:\msys64\mingw64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S C:\Users\Denni\VSCode\Cpp\TicTacToe-Extreme\src\game.cpp -o CMakeFiles\TicTacToeXtrem.dir\src\game.cpp.s
+CMakeFiles/TicTacToeXtrem.dir/src/GameManager.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/TicTacToeXtrem.dir/src/GameManager.cpp.s"
+	C:\msys64\mingw64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S C:\Users\Denni\VSCode\Cpp\TicTacToe-Extreme\src\GameManager.cpp -o CMakeFiles\TicTacToeXtrem.dir\src\GameManager.cpp.s
 
 # Object files for target TicTacToeXtrem
 TicTacToeXtrem_OBJECTS = \
-"CMakeFiles/TicTacToeXtrem.dir/src/game.cpp.obj"
+"CMakeFiles/TicTacToeXtrem.dir/src/GameManager.cpp.obj"
 
 # External object files for target TicTacToeXtrem
 TicTacToeXtrem_EXTERNAL_OBJECTS =
 
-libTicTacToeXtrem.a: CMakeFiles/TicTacToeXtrem.dir/src/game.cpp.obj
+libTicTacToeXtrem.a: CMakeFiles/TicTacToeXtrem.dir/src/GameManager.cpp.obj
 libTicTacToeXtrem.a: CMakeFiles/TicTacToeXtrem.dir/build.make
 libTicTacToeXtrem.a: CMakeFiles/TicTacToeXtrem.dir/link.txt
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=C:\Users\Denni\VSCode\Cpp\TicTacToe-Extreme\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Linking CXX static library libTicTacToeXtrem.a"

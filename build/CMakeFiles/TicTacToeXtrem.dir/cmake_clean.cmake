@@ -1,6 +1,6 @@
 file(REMOVE_RECURSE
-  "CMakeFiles/TicTacToeXtrem.dir/src/game.cpp.obj"
-  "CMakeFiles/TicTacToeXtrem.dir/src/game.cpp.obj.d"
+  "CMakeFiles/TicTacToeXtrem.dir/src/GameManager.cpp.obj"
+  "CMakeFiles/TicTacToeXtrem.dir/src/GameManager.cpp.obj.d"
   "libTicTacToeXtrem.a"
   "libTicTacToeXtrem.pdb"
 )

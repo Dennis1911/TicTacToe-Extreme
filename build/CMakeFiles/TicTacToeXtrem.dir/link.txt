@@ -1,2 +1,2 @@
-C:\msys64\mingw64\bin\ar.exe qc libTicTacToeXtrem.a CMakeFiles/TicTacToeXtrem.dir/src/game.cpp.obj
+C:\msys64\mingw64\bin\ar.exe qc libTicTacToeXtrem.a CMakeFiles/TicTacToeXtrem.dir/src/GameManager.cpp.obj
 C:\msys64\mingw64\bin\ranlib.exe libTicTacToeXtrem.a

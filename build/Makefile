@@ -248,29 +248,29 @@ gameTest/fast:
 	$(MAKE) $(MAKESILENT) -f test\CMakeFiles\gameTest.dir\build.make test/CMakeFiles/gameTest.dir/build
 .PHONY : gameTest/fast
 
-src/game.obj: src/game.cpp.obj
-.PHONY : src/game.obj
+src/GameManager.obj: src/GameManager.cpp.obj
+.PHONY : src/GameManager.obj
 
 # target to build an object file
-src/game.cpp.obj:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\TicTacToeXtrem.dir\build.make CMakeFiles/TicTacToeXtrem.dir/src/game.cpp.obj
-.PHONY : src/game.cpp.obj
+src/GameManager.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\TicTacToeXtrem.dir\build.make CMakeFiles/TicTacToeXtrem.dir/src/GameManager.cpp.obj
+.PHONY : src/GameManager.cpp.obj
 
-src/game.i: src/game.cpp.i
-.PHONY : src/game.i
+src/GameManager.i: src/GameManager.cpp.i
+.PHONY : src/GameManager.i
 
 # target to preprocess a source file
-src/game.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\TicTacToeXtrem.dir\build.make CMakeFiles/TicTacToeXtrem.dir/src/game.cpp.i
-.PHONY : src/game.cpp.i
+src/GameManager.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\TicTacToeXtrem.dir\build.make CMakeFiles/TicTacToeXtrem.dir/src/GameManager.cpp.i
+.PHONY : src/GameManager.cpp.i
 
-src/game.s: src/game.cpp.s
-.PHONY : src/game.s
+src/GameManager.s: src/GameManager.cpp.s
+.PHONY : src/GameManager.s
 
 # target to generate assembly for a file
-src/game.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\TicTacToeXtrem.dir\build.make CMakeFiles/TicTacToeXtrem.dir/src/game.cpp.s
-.PHONY : src/game.cpp.s
+src/GameManager.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\TicTacToeXtrem.dir\build.make CMakeFiles/TicTacToeXtrem.dir/src/GameManager.cpp.s
+.PHONY : src/GameManager.cpp.s
 
 # Help Target
 help:
@@ -291,9 +291,9 @@ help:
 	@echo ... gmock_main
 	@echo ... gtest
 	@echo ... gtest_main
-	@echo ... src/game.obj
-	@echo ... src/game.i
-	@echo ... src/game.s
+	@echo ... src/GameManager.obj
+	@echo ... src/GameManager.i
+	@echo ... src/GameManager.s
 .PHONY : help
 
 

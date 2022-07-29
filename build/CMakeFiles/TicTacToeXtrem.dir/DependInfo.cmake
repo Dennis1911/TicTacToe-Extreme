@@ -8,7 +8,7 @@ set(CMAKE_DEPENDS_LANGUAGES
 
 # The set of dependency files which are needed:
 set(CMAKE_DEPENDS_DEPENDENCY_FILES
-  "C:/Users/Denni/VSCode/Cpp/TicTacToe-Extreme/src/game.cpp" "CMakeFiles/TicTacToeXtrem.dir/src/game.cpp.obj" "gcc" "CMakeFiles/TicTacToeXtrem.dir/src/game.cpp.obj.d"
+  "C:/Users/Denni/VSCode/Cpp/TicTacToe-Extreme/src/GameManager.cpp" "CMakeFiles/TicTacToeXtrem.dir/src/GameManager.cpp.obj" "gcc" "CMakeFiles/TicTacToeXtrem.dir/src/GameManager.cpp.obj.d"
   )
 
 # Targets to which this target links.
