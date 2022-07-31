@@ -1,22 +1,24 @@
 #pragma once
 #include <string>
-#include "GameManager.hpp"
+// #include "GameManager.hpp"
+
+enum Modes {human = 1, randomBot = 2, smartBot = 3, none = 4};
 
 class Player
 {
 public:
     Player()
-        : m_playerType(human)
+        : m_playerType(Modes::none)
         , m_playerName("Player")
         , m_playerLetter("x")
     {};
-/*
-    Player(const Modes playerType, const std::string playerName, const std::string playerLetter)
+
+    Player(const Modes playerType, const std::string playerName, const char* playerLetter)
         : m_playerType(playerType)
         , m_playerName(playerName)
-        , m_playerLetter(playerLetter)
+        , m_playerLetter(playerLetter) // was für n type?
     {};
-*/
+
     Modes getPlayerType();
     std::string getPlayerName();
     std::string setPlayerLetter();

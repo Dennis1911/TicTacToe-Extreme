@@ -1,6 +1,10 @@
 #pragma once
 
-enum Modes {human = 1, randomBot = 2, smartBot = 3};
+#include <string>
+#include <list>
+
+#include "Player.hpp"
+
 
 class GameManager
 {
@@ -12,6 +16,7 @@ public:
     int countPlayers();
     Modes choosePlayers();
     void startGame();
+    void runningGame(std::list<Player>&);
 
 private:
     int m_gameMode;
