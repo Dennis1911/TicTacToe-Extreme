@@ -8,7 +8,7 @@
 
 using namespace std;
 
-// choose how many and
+// choose how many players will play
 int GameManager::countPlayers()
 {
     int maxPlayers = 10; // temp muss weg
@@ -47,11 +47,14 @@ Modes GameManager::choosePlayers()
     return mode;
 }
 
+// 
 void GameManager::startGame()
 {
     Player* player{NULL};
     Player playerInit;
     int playerCount = countPlayers();
+    int randomBotCount{0};
+    int smartBotCount{0};
     cout << "Human: 1" << endl;
     cout << "SmartBot: 2" << endl;
     cout << "RandomBot: 3" << endl;
@@ -65,13 +68,15 @@ void GameManager::startGame()
         switch (gamemode)
         {
         case 1:
-            playerName = playerInit.getPlayerName();
+            playerName = playerInit.getPlayerName(); // check for doppeltes vorkommen von Namen
             break;
         case 2:
-            playerName = "RandomBot";
+            playerName = "Randombot " + to_string(randomBotCount);
+            randomBotCount++;
             break;
         case 3:
-            playerName = "SmartBot";
+            playerName = "Smartbot " + to_string(smartBotCount);
+            smartBotCount++;
             break;
         
         default:
@@ -85,7 +90,6 @@ void GameManager::startGame()
         // cout << *playerListIter << endl; // DENNIS HIER ... Liste richtig füllen gerade ist noch gamemode 
     }
     runningGame(playerList);
-
 }
 
 void GameManager::runningGame(list<Player>& playerList)
@@ -95,18 +99,14 @@ void GameManager::runningGame(list<Player>& playerList)
     do
     {
         list<Player>::iterator it = next( playerList.begin(), currentPlayer);
-        cout << &it << endl; // hier statt playerType den Name ausgeben
+        cout << &it << endl; // wie kann man bei einem iterator auf eine Klasse auf die Inhalte zugreifen??
         currentPlayer++;
-        if (currentPlayer == 5)
+        if (currentPlayer == playerList.size())
         {
             gameover = true;
         }
-        
-        
         // gameover = checkForWin();
     } while (gameover == false);
-    
-
 }
 
 // std::list<int>::iterator it = std::next( myList.begin(), n );
