@@ -16,7 +16,7 @@ public:
     Player(const Modes playerType, const std::string playerName, const char* playerLetter)
         : m_playerType(playerType)
         , m_playerName(playerName)
-        , m_playerLetter(playerLetter) // was für n type?
+        , m_playerLetter(playerLetter)
     {};
 
     Modes getPlayerType();

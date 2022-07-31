@@ -12,3 +12,9 @@
 
 
 - Beim setzten gar nicht nach Player gehen, sonder einfach durch die Liste der Buchstaben durchgehen (Länge= Playercount)
+
+- TODO:
+- Playfield -> aus Parameterdatei breite und höhe
+- GUI -> Playfield printen -> googlen?
+- Randombot -> setzten zwischen 0 - breite²
+- Smartbot verschiedene Kriterien
