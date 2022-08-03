@@ -4,6 +4,7 @@
 #include "GameManager.hpp"
 #include "InputHandler.hpp"
 #include "Player.hpp"
+#include "Playboard.hpp"
 
 
 using namespace std;
@@ -78,10 +79,8 @@ void GameManager::startGame()
             playerName = "Smartbot " + to_string(smartBotCount);
             smartBotCount++;
             break;
-        
-        default:
-            break;
         }
+        // List of Symbols x,o,a,b,c,... hier bei "x"
         player = new Player(gamemode, playerName, "x");
         
         playerList.insert(playerList.begin(), *player);
@@ -107,6 +106,9 @@ void GameManager::runningGame(list<Player>& playerList)
         }
         // gameover = checkForWin();
     } while (gameover == false);
+
+    Playboard playboard(6 ,6);
+    playboard.printPlayboard(playboard);
 }
 
 // std::list<int>::iterator it = std::next( myList.begin(), n );

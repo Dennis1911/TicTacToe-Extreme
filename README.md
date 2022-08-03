@@ -18,3 +18,8 @@
 - GUI -> Playfield printen -> googlen?
 - Randombot -> setzten zwischen 0 - breite²
 - Smartbot verschiedene Kriterien
+
+
+- Smartbot:
+  - Wenn schon ein x in Spalte oder Reihe ist... dann eher woanders
+  - 

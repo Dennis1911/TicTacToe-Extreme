@@ -10,13 +10,13 @@ public:
     Player()
         : m_playerType(Modes::none)
         , m_playerName("Player")
-        , m_playerLetter("x")
+        , m_playerSymbol("x")
     {};
 
-    Player(const Modes playerType, const std::string playerName, const char* playerLetter)
+    Player(const Modes playerType, const std::string playerName, const char* playerSymbol)
         : m_playerType(playerType)
         , m_playerName(playerName)
-        , m_playerLetter(playerLetter)
+        , m_playerSymbol(playerSymbol)
     {};
 
     Modes getPlayerType();
@@ -26,5 +26,5 @@ public:
 protected:
     Modes m_playerType;
     std::string m_playerName;
-    std::string m_playerLetter;
+    std::string m_playerSymbol;
 };
