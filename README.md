@@ -19,6 +19,12 @@
 - Randombot -> setzten zwischen 0 - breite²
 - Smartbot verschiedene Kriterien
 
+Donnerstag:
+
+- playerInput x, y -> current player
+- put in field
+- print field
+
 
 - Smartbot:
   - Wenn schon ein x in Spalte oder Reihe ist... dann eher woanders

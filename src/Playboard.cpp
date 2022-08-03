@@ -5,27 +5,11 @@
 
 using namespace std;
 
-int Playboard::setSymbol(const Symbol symbol, const int xVal)
+
+int Playboard::setSymbol(const Symbol symbol, const int xVal, const int yVal)
 {
-    //Konvertiere in Array-Wert
-    int x = xVal - 1;
+    m_field.at(xVal).at(yVal) = symbol;
 
-    if (x >= m_width || x < 0)
-        return -1;
-
-    int posY = -1;
-    for (int y = m_height - 1; y >= 0; y--)
-    {
-        if (m_field.at(x).at(y) == Symbol::z)
-        {
-            m_field.at(x).at(y) = symbol;
-            posY = y + 1;
-            m_lastPlacedX = x + 1;
-            m_lastPlacedY = posY;
-            break;
-        }
-    }
-    return posY;
 }
 
 std::vector<std::vector<Symbol>> Playboard::getPlayboard() const
@@ -33,7 +17,7 @@ std::vector<std::vector<Symbol>> Playboard::getPlayboard() const
     return m_field;
 }
 
-void Playboard::printPlayboard(const int x, const int y, const std::vector<std::vector<Symbol>> field)
+void Playboard::printSymbol(const int x, const int y, const std::vector<std::vector<Symbol>> field)
 
 {
 	
@@ -80,7 +64,7 @@ void Playboard::printPlayboard(const Playboard& playboard)
 			}
 			else
 			{
-				printPlayboard(x-1, y-1, field);;
+				printSymbol(x-1, y-1, field);
 			}
 		}
 		cout << endl;

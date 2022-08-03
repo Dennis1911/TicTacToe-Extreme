@@ -15,7 +15,7 @@ string Player::getPlayerName()
     return m_playerName;
 }
 
-string Player::setPlayerLetter()
+string Player::setPlayerSymbol()
 {
     string Symbols[] = {"x", "o", "a", "b", "c"}; 
     m_playerSymbol = Symbols[1];

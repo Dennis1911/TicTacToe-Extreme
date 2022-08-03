@@ -29,12 +29,13 @@ public:
         this->m_field = create.m_field;
     };
 */
-    int setSymbol(const Symbol symbol, const int xVal);
+    int setSymbol(const Symbol symbol, const int xVal, const int yVal);
 
     void printPlayboard(const Playboard& playboard);
     int getWidth();
     int getHeight();
-    void printPlayboard(const int x, const int y, const std::vector<std::vector<Symbol>> field);
+    void printSymbol(const int x, const int y, const std::vector<std::vector<Symbol>> field);
+
     std::vector<std::vector<Symbol>> getPlayboard() const;
 
 private:

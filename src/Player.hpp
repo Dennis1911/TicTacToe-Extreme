@@ -21,7 +21,7 @@ public:
 
     Modes getPlayerType();
     std::string getPlayerName();
-    std::string setPlayerLetter();
+    std::string setPlayerSymbol();
 
 protected:
     Modes m_playerType;
