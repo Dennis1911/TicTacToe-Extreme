@@ -107,8 +107,14 @@ void GameManager::runningGame(list<Player>& playerList)
         // gameover = checkForWin();
     } while (gameover == false);
 
-    Playboard playboard(6 ,6);
+    Playboard playboard(6,6);
+
+    playboard.setSymbol(x, 2, 2);
+    
     playboard.printPlayboard(playboard);
+    playboard.setSymbol(y, 3, 1); // wird in die Liste geschrieben aber nicht ausgeprinted? wieso updatet playboard nicht das field??
+    playboard.printPlayboard(playboard);
+        
 }
 
 // std::list<int>::iterator it = std::next( myList.begin(), n );
