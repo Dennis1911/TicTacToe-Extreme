@@ -5,6 +5,7 @@
 #include "InputHandler.hpp"
 #include "Player.hpp"
 #include "Playboard.hpp"
+#include "enum.hpp"
 
 
 using namespace std;
@@ -69,7 +70,8 @@ void GameManager::startGame()
         switch (gamemode)
         {
         case 1:
-            playerName = playerInit.getPlayerName(); // check for doppeltes vorkommen von Namen
+            playerName = InputHandler::getString("What is your name?: ");
+            //playerName = playerInit.getPlayerName(); // check for doppeltes vorkommen von Namen
             break;
         case 2:
             playerName = "Randombot " + to_string(randomBotCount);
@@ -80,40 +82,54 @@ void GameManager::startGame()
             smartBotCount++;
             break;
         }
-        // List of Symbols x,o,a,b,c,... hier bei "x"
-        player = new Player(gamemode, playerName, "x");
         
-        playerList.insert(playerList.begin(), *player);
-        //Modes mode = playerMode; // bei enum switch case oder wie kann man aus einer Zahl ein Mode machen??
-        // unordered multiset adden
-        // cout << *playerListIter << endl; // DENNIS HIER ... Liste richtig füllen gerade ist noch gamemode 
+        Symbol playerSymbol = Symbol(playerCount);
+        player = new Player(gamemode, playerName, playerSymbol);
+        
+        playerList.insert(playerList.begin(), *player); // Liste mit allen Spielern
     }
     runningGame(playerList);
 }
 
 void GameManager::runningGame(list<Player>& playerList)
 {
+    Playboard playboard(6,6);
     bool gameover = false;
     int currentPlayer = 0;
     do
     {
         list<Player>::iterator it = next( playerList.begin(), currentPlayer);
         cout << &it << endl; // wie kann man bei einem iterator auf eine Klasse auf die Inhalte zugreifen??
-        currentPlayer++;
-        if (currentPlayer == playerList.size())
+
+        string playerName = it->getPlayerName();
+        cout << playerName << " it's your turn:" << endl;
+
+        int xCord = InputHandler::getIntFromRange("Enter x coordinate: ", 1, 6);
+        int yCord = InputHandler::getIntFromRange("Enter y coordinate: ", 1, 6);
+
+        // check for valid symbol at cords
+        // place player.symbol at cords
+        if (true)
+        {
+            playboard.setSymbol(x, xCord - 1, yCord - 1);
+            playboard.printPlayboard(playboard);
+            // check for win here
+            currentPlayer++;
+        }
+        else
+        {
+            cout << "This field is full. Place elsewhere." << endl;
+            currentPlayer--;
+        }
+        
+        
+
+        if (currentPlayer == playerList.size()) // gameover = checkForWin();
         {
             gameover = true;
         }
-        // gameover = checkForWin();
+        
     } while (gameover == false);
-
-    Playboard playboard(6,6);
-
-    playboard.setSymbol(x, 2, 2);
-    
-    playboard.printPlayboard(playboard);
-    playboard.setSymbol(y, 3, 1); // wird in die Liste geschrieben aber nicht ausgeprinted? wieso updatet playboard nicht das field??
-    playboard.printPlayboard(playboard);
         
 }
 

@@ -30,8 +30,11 @@ void Playboard::printSymbol(const int x, const int y, const std::vector<std::vec
 		case Symbol::o:
 			cout << "o ";
 			break;
+        case Symbol::none:
+            cout << "  ";
+            break;
 		default:
-			cout << "  ";
+			cout << "ü";
 	}
 }
 

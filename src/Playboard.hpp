@@ -2,7 +2,7 @@
 
 #include <vector>
 
-enum Symbol {x, o, a, b, c, d, e, f, g, h, i, j, k, l, m, n, p, q, r, s, t, u, v, w, y, z}; // kann man wohl auch in Parameter schreiben
+#include "enum.hpp"
 
 class Playboard
 {
@@ -15,7 +15,7 @@ public:
             std::vector<Symbol> col;
             for (int y = 0; y < height; y++)
             {
-                col.push_back(Symbol::z);
+                col.push_back(Symbol::none);
             }
             m_field.push_back(col);
         }
