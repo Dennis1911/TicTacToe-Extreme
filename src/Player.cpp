@@ -6,14 +6,16 @@
 
 using namespace std;
 
-/*
-Modes Player::getPlayerType()
-{}
-*/
+
 string Player::getPlayerName()
 {
-    // m_playerName = InputHandler::getString("What is your name?: ");
+
     return m_playerName;
+}
+
+Symbol Player::getPlayerSymbol()
+{
+    return m_playerSymbol;
 }
 
 string Player::setPlayerSymbol() // hier rather Symbol übergeben und dann vllt hier die String conversion machen?

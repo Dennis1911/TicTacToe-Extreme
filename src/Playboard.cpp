@@ -6,6 +6,7 @@
 using namespace std;
 
 
+
 int Playboard::setSymbol(const Symbol symbol, const int xVal, const int yVal)
 {
     m_field.at(xVal).at(yVal) = symbol;
@@ -34,7 +35,8 @@ void Playboard::printSymbol(const int x, const int y, const std::vector<std::vec
             cout << "  ";
             break;
 		default:
-			cout << "ü";
+			char abc = char(checkColor + 95);
+			cout << abc;
 	}
 }
 
@@ -72,4 +74,27 @@ void Playboard::printPlayboard(const Playboard& playboard)
 		}
 		cout << endl;
 	}
+}
+
+bool Playboard::ifWon(const Playboard& playboard)
+{
+	if (Playboard::streak(playboard) == 3)
+	{
+		return true;
+	}
+	else
+	{
+		return false;
+	}
+}
+int winwin = 0;
+int Playboard::streak(const Playboard& playboard)
+{
+	if (winwin == 5)
+	{
+		winwin++;
+		cout << winwin << endl;
+	}
+	
+	return 3;
 }
