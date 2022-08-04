@@ -83,11 +83,12 @@ void GameManager::startGame()
             break;
         }
         
-        Symbol playerSymbol = Symbol(playerCount);
+        Symbol playerSymbol = Symbol(i - 1);
         player = new Player(gamemode, playerName, playerSymbol);
         
         playerList.insert(playerList.begin(), *player); // Liste mit allen Spielern
     }
+    playerList.reverse(); // reverse list so that first named player begins
     runningGame(playerList);
 }
 
@@ -104,6 +105,8 @@ void GameManager::runningGame(list<Player>& playerList)
         string playerName = it->getPlayerName();
         cout << playerName << " it's your turn:" << endl;
 
+        Symbol playerSymbol = it->getPlayerSymbol();
+
         int xCord = InputHandler::getIntFromRange("Enter x coordinate: ", 1, 6);
         int yCord = InputHandler::getIntFromRange("Enter y coordinate: ", 1, 6);
 
@@ -111,9 +114,9 @@ void GameManager::runningGame(list<Player>& playerList)
         // place player.symbol at cords
         if (true)
         {
-            playboard.setSymbol(x, xCord - 1, yCord - 1);
+            playboard.setSymbol(playerSymbol, xCord - 1, yCord - 1);
             playboard.printPlayboard(playboard);
-            // check for win here
+            gameover == playboard.ifWon(playboard); // der müsste gerade eigentlich nach dem ersten Zug schon true zurück geben.. kommt aber nichts
             currentPlayer++;
         }
         else
@@ -121,17 +124,10 @@ void GameManager::runningGame(list<Player>& playerList)
             cout << "This field is full. Place elsewhere." << endl;
             currentPlayer--;
         }
-        
-        
-
-        if (currentPlayer == playerList.size()) // gameover = checkForWin();
-        {
-            gameover = true;
-        }
-        
-    } while (gameover == false);
-        
+    
+    if (currentPlayer >= playerList.size()) // loop through the list from the beginning
+    {
+        currentPlayer = 0;
+    }
+    } while (gameover == false);       
 }
-
-// std::list<int>::iterator it = std::next( myList.begin(), n );
-// list element n
