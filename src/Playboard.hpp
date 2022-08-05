@@ -36,8 +36,8 @@ public:
     int getWidth();
     int getHeight();
     void printSymbol(const int x, const int y, const std::vector<std::vector<Symbol>> field);
-    bool ifWon(const Playboard& playboard);
-    int streak(const Playboard& playboard);
+    bool ifWon(const Symbol symbol, const int xCord, const int yCord);
+    int streak(const Symbol symbol, const int xCord, const int yCord);
 
     std::vector<std::vector<Symbol>> getPlayboard() const;
 

@@ -107,16 +107,16 @@ void GameManager::runningGame(list<Player>& playerList)
 
         Symbol playerSymbol = it->getPlayerSymbol();
 
-        int xCord = InputHandler::getIntFromRange("Enter x coordinate: ", 1, 6);
-        int yCord = InputHandler::getIntFromRange("Enter y coordinate: ", 1, 6);
+        int xCord = InputHandler::getIntFromRange("Enter x coordinate: ", 1, 6) - 1;
+        int yCord = InputHandler::getIntFromRange("Enter y coordinate: ", 1, 6) - 1;
 
         // check for valid symbol at cords
         // place player.symbol at cords
-        if (true)
+        if (true) // valid move
         {
-            playboard.setSymbol(playerSymbol, xCord - 1, yCord - 1);
+            playboard.setSymbol(playerSymbol, xCord, yCord);
             playboard.printPlayboard(playboard);
-            gameover == playboard.ifWon(playboard); // der müsste gerade eigentlich nach dem ersten Zug schon true zurück geben.. kommt aber nichts
+            gameover = playboard.ifWon(playerSymbol, xCord, yCord); // der müsste gerade eigentlich nach dem ersten Zug schon true zurück geben.. kommt aber nichts
             currentPlayer++;
         }
         else
@@ -129,5 +129,7 @@ void GameManager::runningGame(list<Player>& playerList)
     {
         currentPlayer = 0;
     }
-    } while (gameover == false);       
+    } while (gameover == false); 
+
+    
 }

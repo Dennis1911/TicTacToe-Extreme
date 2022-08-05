@@ -76,25 +76,21 @@ void Playboard::printPlayboard(const Playboard& playboard)
 	}
 }
 
-bool Playboard::ifWon(const Playboard& playboard)
+bool Playboard::ifWon(const Symbol symbol, int xCord, int yCord)
 {
-	if (Playboard::streak(playboard) == 3)
+	if (Playboard::streak(symbol, xCord, yCord) == 3) 
 	{
-		return true;
+		return true; // gameover
 	}
 	else
 	{
-		return false;
+		return false; //no one has won
 	}
 }
-int winwin = 0;
-int Playboard::streak(const Playboard& playboard)
+
+
+int Playboard::streak(const Symbol symbol, int xCord, int yCord)
 {
-	if (winwin == 5)
-	{
-		winwin++;
-		cout << winwin << endl;
-	}
 	
 	return 3;
 }
