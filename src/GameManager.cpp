@@ -100,8 +100,9 @@ void GameManager::runningGame(list<Player>& playerList)
     string playerName;
     do
     {
+        playboard.printPlayboard(playboard);
         list<Player>::iterator it = next( playerList.begin(), currentPlayer);
-        cout << &it << endl; // wie kann man bei einem iterator auf eine Klasse auf die Inhalte zugreifen??
+        //cout << &it << endl; // wie kann man bei einem iterator auf eine Klasse auf die Inhalte zugreifen??
 
         playerName = it->getPlayerName();
         cout << playerName << " it's your turn:" << endl;
@@ -116,7 +117,7 @@ void GameManager::runningGame(list<Player>& playerList)
         if (true) // valid move
         {
             playboard.setSymbol(playerSymbol, xCord, yCord);
-            playboard.printPlayboard(playboard);
+            //playboard.printPlayboard(playboard);
             gameover = playboard.ifWon(playerSymbol, xCord, yCord); // der müsste gerade eigentlich nach dem ersten Zug schon true zurück geben.. kommt aber nichts
             currentPlayer++;
         }
@@ -131,7 +132,7 @@ void GameManager::runningGame(list<Player>& playerList)
         currentPlayer = 0;
     }
     } while (gameover == false); 
-
+    playboard.printPlayboard(playboard);
     cout << "GameOver!" << " Player: " << playerName << " has won!" << endl;
     
 }

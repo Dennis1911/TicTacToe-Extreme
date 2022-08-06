@@ -18,12 +18,12 @@ std::vector<std::vector<Symbol>> Playboard::getPlayboard() const
     return m_field;
 }
 
-void Playboard::printSymbol(const int x, const int y, const std::vector<std::vector<Symbol>> field)
+void Playboard::printSymbol(const int xCord, const int yCord, const std::vector<std::vector<Symbol>> field)
 
 {
 	
-	Symbol checkColor = field[x][y];
-	switch (checkColor)
+	Symbol checksymbol = field[xCord][yCord];
+	switch (checksymbol)
 	{
 		case Symbol::x:
 			cout << "x ";
@@ -35,7 +35,7 @@ void Playboard::printSymbol(const int x, const int y, const std::vector<std::vec
             cout << "  ";
             break;
 		default:
-			char abc = char(checkColor + 95);
+			char abc = char(checksymbol + 95);
 			cout << abc;
 	}
 }
@@ -47,68 +47,54 @@ void Playboard::printPlayboard(const Playboard& playboard)
 	int height = m_height;
 	std::vector<std::vector<Symbol>> field = playboard.getPlayboard();
 
-	for (int y = 0; y <= height; y++) // one row higher
+	for (int yCord = 0; yCord <= height; yCord++) // one row higher
 	{
-		for (int x = 0; x <= width; x++) // filling up a row with spaces or chips (if placed)
+		for (int xCord = 0; xCord <= width; xCord++) // filling up a row with spaces or chips (if placed)
 
 		{
-			if (x == 0 && y == 0)
+			if (xCord == 0 && yCord == 0)
 			{
 				cout << "  ";
 				continue;
 			}
-			if (x == 0)
+			if (xCord == 0)
 			{
-				cout << y << " ";
+				cout << yCord << " ";
 				continue;
 			}
-			if (y == 0)
+			if (yCord == 0)
 			{
-				cout << x << " ";
+				cout << xCord << " ";
 				continue;
 			}
 			else
 			{
-				printSymbol(x-1, y-1, field);
+				printSymbol(xCord-1, yCord-1, field);
 			}
 		}
 		cout << endl;
 	}
 }
 
-bool Playboard::ifWon(const Symbol symbol, int xCord, int yCord)
+bool Playboard::ifWon(const Symbol symbol, const int xCord, const int yCord)
 {
-	m_streakCounter = 0;
-	if (Playboard::streak(symbol, xCord, yCord) == 3) 
-	{
-		return true; // gameover
-	}
-	else
-	{
-		return false; //no one has won
-	}
+    return streak(symbol, xCord - 1, yCord, -1, 0) + streak(symbol ,xCord + 1, yCord, 1, 0) >= 2 ||
+        streak(symbol, xCord, yCord - 1, 0, -1) + streak(symbol, xCord, yCord + 1, 0, 1) >= 2 ||
+        streak(symbol, xCord - 1, yCord - 1, -1, -1) + streak(symbol, xCord + 1, yCord + 1, 1, 1) >= 2 ||
+        streak(symbol, xCord - 1, yCord + 1, -1, 1) + streak(symbol, xCord + 1, yCord - 1, 1, -1) >= 2;
 }
 
 
-int Playboard::streak(const Symbol symbol, int xCord, int yCord)
+int Playboard::streak(const Symbol symbol, const int xCord, const int yCord, const int xdir, const int ydir)
 {
-	bool validInput = xCord <= m_width && xCord >= 0 && yCord >= 0 && yCord <= m_height;
+	bool validInput = xCord < m_width && xCord >= 0 && yCord >= 0 && yCord < m_height;
 	if (validInput)
-	{
-		bool rightSymbol = m_field[xCord][yCord] == symbol;
-		// if diagonal
-		if (validInput && rightSymbol)
-		{
-			m_streakCounter++;
-			streak(symbol, xCord - 1, yCord -1);
-			cout << " what happens here" << endl;
-		}
-		else if (validInput && m_field[xCord + 2][yCord + 2] == symbol)
-		{
-			m_streakCounter++;
-			streak(symbol, xCord + 3, yCord + 3);
-			cout << " what happens here" << endl;
-		}
-	}
-	return m_streakCounter;
+    {
+        if (m_field[xCord][yCord] == symbol)
+        {
+            return streak(symbol,xCord + xdir, yCord + ydir, xdir, ydir) + 1;
+        }
+    }
+
+    return 0;
 }

@@ -37,15 +37,13 @@ public:
     int getHeight();
     void printSymbol(const int x, const int y, const std::vector<std::vector<Symbol>> field);
     bool ifWon(const Symbol symbol, const int xCord, const int yCord);
-    int streak(const Symbol symbol, const int xCord, const int yCord);
+    int streak(const Symbol symbol, const int xCord, const int yCord, const int xdir, const int ydir);
 
     std::vector<std::vector<Symbol>> getPlayboard() const;
 
 private:
 int m_width;
 int m_height;
-int m_lastPlacedX;
-int m_lastPlacedY;
 int m_streakCounter;
 std::vector<std::vector<Symbol>> m_field;
 };

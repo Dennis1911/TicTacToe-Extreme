@@ -97,11 +97,11 @@
 		},
 		{
 			"backtrace" : 2,
-			"id" : "gtest::@7e3677ed2a4dc8c8eb88"
+			"id" : "gtest_main::@7e3677ed2a4dc8c8eb88"
 		},
 		{
 			"backtrace" : 2,
-			"id" : "gtest_main::@7e3677ed2a4dc8c8eb88"
+			"id" : "gtest::@7e3677ed2a4dc8c8eb88"
 		}
 	],
 	"id" : "gameTest::@36f028580bb02cc8272a",
