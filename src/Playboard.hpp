@@ -46,5 +46,6 @@ int m_width;
 int m_height;
 int m_lastPlacedX;
 int m_lastPlacedY;
+int m_streakCounter;
 std::vector<std::vector<Symbol>> m_field;
 };

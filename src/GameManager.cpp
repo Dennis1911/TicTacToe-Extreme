@@ -55,8 +55,8 @@ void GameManager::startGame()
     Player* player{NULL};
     Player playerInit;
     int playerCount = countPlayers();
-    int randomBotCount{0};
-    int smartBotCount{0};
+    int randomBotCount{1};
+    int smartBotCount{1};
     cout << "Human: 1" << endl;
     cout << "SmartBot: 2" << endl;
     cout << "RandomBot: 3" << endl;
@@ -97,12 +97,13 @@ void GameManager::runningGame(list<Player>& playerList)
     Playboard playboard(6,6);
     bool gameover = false;
     int currentPlayer = 0;
+    string playerName;
     do
     {
         list<Player>::iterator it = next( playerList.begin(), currentPlayer);
         cout << &it << endl; // wie kann man bei einem iterator auf eine Klasse auf die Inhalte zugreifen??
 
-        string playerName = it->getPlayerName();
+        playerName = it->getPlayerName();
         cout << playerName << " it's your turn:" << endl;
 
         Symbol playerSymbol = it->getPlayerSymbol();
@@ -131,5 +132,6 @@ void GameManager::runningGame(list<Player>& playerList)
     }
     } while (gameover == false); 
 
+    cout << "GameOver!" << " Player: " << playerName << " has won!" << endl;
     
 }

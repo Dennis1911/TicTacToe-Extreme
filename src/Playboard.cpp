@@ -78,6 +78,7 @@ void Playboard::printPlayboard(const Playboard& playboard)
 
 bool Playboard::ifWon(const Symbol symbol, int xCord, int yCord)
 {
+	m_streakCounter = 0;
 	if (Playboard::streak(symbol, xCord, yCord) == 3) 
 	{
 		return true; // gameover
@@ -91,6 +92,23 @@ bool Playboard::ifWon(const Symbol symbol, int xCord, int yCord)
 
 int Playboard::streak(const Symbol symbol, int xCord, int yCord)
 {
-	
-	return 3;
+	bool validInput = xCord <= m_width && xCord >= 0 && yCord >= 0 && yCord <= m_height;
+	if (validInput)
+	{
+		bool rightSymbol = m_field[xCord][yCord] == symbol;
+		// if diagonal
+		if (validInput && rightSymbol)
+		{
+			m_streakCounter++;
+			streak(symbol, xCord - 1, yCord -1);
+			cout << " what happens here" << endl;
+		}
+		else if (validInput && m_field[xCord + 2][yCord + 2] == symbol)
+		{
+			m_streakCounter++;
+			streak(symbol, xCord + 3, yCord + 3);
+			cout << " what happens here" << endl;
+		}
+	}
+	return m_streakCounter;
 }
