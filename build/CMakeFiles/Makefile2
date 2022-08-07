@@ -280,8 +280,8 @@ lib/googletest/googletest/CMakeFiles/gtest_main.dir/clean:
 
 # All Build rule for target.
 test/CMakeFiles/gameTest.dir/all: CMakeFiles/TicTacToeXtrem.dir/all
-test/CMakeFiles/gameTest.dir/all: lib/googletest/googletest/CMakeFiles/gtest_main.dir/all
 test/CMakeFiles/gameTest.dir/all: lib/googletest/googletest/CMakeFiles/gtest.dir/all
+test/CMakeFiles/gameTest.dir/all: lib/googletest/googletest/CMakeFiles/gtest_main.dir/all
 	$(MAKE) $(MAKESILENT) -f test\CMakeFiles\gameTest.dir\build.make test/CMakeFiles/gameTest.dir/depend
 	$(MAKE) $(MAKESILENT) -f test\CMakeFiles\gameTest.dir\build.make test/CMakeFiles/gameTest.dir/build
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=C:\Users\Denni\VSCode\Cpp\TicTacToe-Extreme\build\CMakeFiles --progress-num=3,4 "Built target gameTest"

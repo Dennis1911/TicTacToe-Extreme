@@ -4,7 +4,6 @@
 #include <list>
 #include <vector>
 
-
 #include "Player.hpp"
 
 enum Axis {xAxis, yAxis};

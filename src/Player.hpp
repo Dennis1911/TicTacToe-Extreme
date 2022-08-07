@@ -24,9 +24,7 @@ public:
 
     Modes getPlayerType();
     std::string getPlayerName();
-    std::string setPlayerSymbol();
     Symbol getPlayerSymbol();
-    std::vector<std::vector<int>> smartBotMove(); //
     
 
 private:

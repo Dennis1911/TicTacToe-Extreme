@@ -31,9 +31,7 @@ std::vector<std::vector<Symbol>> Playboard::getPlayboard() const
 
 // prints a players symbol to the playboard (x, o, a, b, c,...)
 void Playboard::printSymbol(const int xCord, const int yCord, const std::vector<std::vector<Symbol>> field)
-
 {
-	
 	Symbol checksymbol = field[xCord][yCord];
 	switch (checksymbol)
 	{
@@ -62,7 +60,6 @@ void Playboard::printPlayboard(const Playboard& playboard)
 	for (int yCord = 0; yCord <= height; yCord++) // vertical
 	{
 		for (int xCord = 0; xCord <= width; xCord++) // horizontal - filling up a row with spaces or symbols (if any are placed)
-
 		{
 			if (xCord == 0 && yCord == 0)
 			{
@@ -87,6 +84,13 @@ void Playboard::printPlayboard(const Playboard& playboard)
 		cout << endl;
 	}
 }
+
+int Playboard::getMaxPlayers()
+{
+	int fields = m_height * m_width;
+	return fields;
+}
+
 bool Playboard::playboardIsFull()
 {
 	int fields = m_height * m_width;
@@ -100,7 +104,6 @@ bool Playboard::playboardIsFull()
 // check for 3 identical symbols in a row, vertically and diagonally and if playboard is full
 bool Playboard::ifWon(const Symbol symbol, const int xCord, const int yCord)
 {
-	
     return streak(symbol, xCord - 1, yCord, -1, 0) + streak(symbol ,xCord + 1, yCord, 1, 0) >= 2 ||
         streak(symbol, xCord, yCord - 1, 0, -1) + streak(symbol, xCord, yCord + 1, 0, 1) >= 2 ||
         streak(symbol, xCord - 1, yCord - 1, -1, -1) + streak(symbol, xCord + 1, yCord + 1, 1, 1) >= 2 ||

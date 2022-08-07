@@ -4,7 +4,6 @@
 
 #include "enum.hpp"
 
-
 class Playboard
 {
 public:
@@ -23,14 +22,7 @@ public:
         }
     };
 	~Playboard() {};
-    /* kann der wirklich weg bleiben??
-    Playboard& operator=(const Playboard& create)
-    {
-        this->m_width = create.m_width;
-        this->m_height = create.m_height;
-        this->m_field = create.m_field;
-    };
-*/
+
     bool checkSymbol(const Symbol symbol, const int xCord, const int yCord);
     void setSymbol(const Symbol symbol, const int xCord, const int yCord);
 
@@ -42,6 +34,7 @@ public:
     std::vector<int> smartBotBlock(const Symbol symbol, const int xCord, const int yCord);
     int streak(const Symbol symbol, const int xCord, const int yCord, const int xdir, const int ydir);
     bool playboardIsFull();
+    int getMaxPlayers();
 
     std::vector<std::vector<Symbol>> getPlayboard() const;
 

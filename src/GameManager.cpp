@@ -17,7 +17,7 @@ using namespace std;
 // choose how many players will play
 int GameManager::countPlayers()
 {
-    int maxPlayers = 10; // temp muss weg
+    int maxPlayers = 10;//Playboard::getMaxPlayers(); // temp muss weg
     int playerCount = InputHandler::getIntFromRange("Gebe die Anzahl der Spieler an: ", 1, maxPlayers);// from range weil max players == fields
     
     cout << "Anzahl der Spieler: " << playerCount << endl;
@@ -73,7 +73,7 @@ int GameManager::makeMove(Axis axis, Modes mode, bool validMove)
     case randomBot:
         if (axis == xAxis)
         {
-            xCord = rand() % 6; // playboard size - 1 ... ansonsten wegen + 1 zu groß
+            xCord = rand() % 6; // playboard size
         }
         else if(axis == yAxis)
         {
@@ -118,7 +118,7 @@ int GameManager::makeMove(Axis axis, Modes mode, bool validMove)
     }
 }
 
-// 
+// choose how many players and which type of player
 void GameManager::startGame()
 {
     Player* player{NULL};
@@ -132,7 +132,7 @@ void GameManager::startGame()
     cout << "RandomBot: 3" << endl;
     list<Player> playerList;
 
-    for (int i = 1; i <= playerCount; i++) // ausgliedern? playerInitialize....
+    for (int i = 1; i <= playerCount; i++)
     {
         Modes gamemode = choosePlayers();
         cout << "Player " << i << " is " << gamemode << endl;
@@ -141,7 +141,6 @@ void GameManager::startGame()
         {
         case 1:
             playerName = InputHandler::getString("What is your name?: ");
-            //playerName = playerInit.getPlayerName(); // check for doppeltes vorkommen von Namen - for loop in string checkName liefert namen
             break;
         case 2:
             playerName = "Randombot " + to_string(randomBotCount);
@@ -162,6 +161,7 @@ void GameManager::startGame()
     runningGame(playerList);
 }
 
+// loops through playerList and lets player make its move (depending on playerType)
 void GameManager::runningGame(list<Player>& playerList)
 {
     Playboard playboard(6,6);
@@ -206,11 +206,10 @@ void GameManager::runningGame(list<Player>& playerList)
     {
         currentPlayer = 0;
     }
-    } while (gameover == false); 
-    playboard.printPlayboard(playboard);
+    } while (gameover == false);
 
+    playboard.printPlayboard(playboard);
     gameoverText(playerHasWon, playerName);
-    
 }
 
 void GameManager::gameoverText(bool playerHasWon, string playerName)
@@ -224,6 +223,4 @@ void GameManager::gameoverText(bool playerHasWon, string playerName)
     {
         cout << "No winner, the playboard is full." << endl;
     }
-    
-    
 }
