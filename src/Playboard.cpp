@@ -5,6 +5,7 @@
 
 using namespace std;
 
+
 // checks if no symbol is at a specific coordinate
 bool Playboard::checkSymbol(const Symbol symbol, const int xCord, const int yCord)
 {
@@ -111,7 +112,7 @@ bool Playboard::ifWon(const Symbol symbol, const int xCord, const int yCord)
         streak(symbol, xCord - 1, yCord + 1, -1, 1) + streak(symbol, xCord + 1, yCord - 1, 1, -1) >= 2;
 }
 
-// checks if a Player has 2 symbols in a row - so that the smartBot can block
+// checks if a Player has 2 symbols in a row - so that the smartBot can block or win
 // not the cleanest solution but it works
 vector<int> Playboard::smartBotBlock(const Symbol symbol, const int xCord, const int yCord)
 {

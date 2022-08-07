@@ -22,4 +22,5 @@ In der Funktion von runningGame wird auch eine Instanz von Playboard initialisie
 Spielerweiterungen:
 
 - Wenn mehr Spieler spielen sollen als es überhaupt Felder gibt wird dies verboten
+- Wenn weiter SpielerTypen hinzugefügt werden wollen, kann einfach das enum der Spielertypen erweitert werden und anschließend muss die makeMove Funktion erstellt und im switchCase bei dem jeweiligen Spielertyp eingebracht werden. Dadurch ist eine Erweiterung von neuen Spielertypen sehr einfach.
 

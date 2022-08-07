@@ -1,77 +1,42 @@
 #include "gtest/gtest.h"
-#include "../src/game.hpp"
+#include "gameManager.hpp"
+
+#include <vector>
 
 
 class GameTest
 	: public ::testing::Test
 {
 protected:
-	Game m_game;
+	GameManager m_game;
 
 	virtual void SetUp() override
 	{
-		m_game = Game();
+		m_game = GameManager();
 	}
 
-	void rollOnlyThisNumber(int nRolls, int rollResults) // Helferfunktion
+	void testSmartBot(std::vector<int> cords) // Helferfunktion
 	{
-		for (int i = 0; i < nRolls; ++i)
-		{
-			m_game.roll(rollResults);
-		}
+		m_game.runningGame(humanPlayer, smartBot);
+        // input should be cords for the humanPlaer
+        // then see what the smartBot does
 	}
 };
 
-TEST_F(GameTest, ScoreIsZeroWithOnlyZeroRolls)
+TEST_F(GameTest, TestSmartBotHeShouldBlock)
 {
     // Given
-    rollOnlyThisNumber(20,0);
+    std::vector<int> cords;
+    cords.insert(cords.begin(), 2);
+    cords.insert(cords.begin(), 2);
+    cords.insert(cords.begin(), 1);
+    cords.insert(cords.begin(), 1);
+    testSmartBot(cords);
 
     // When
-    int score = m_game.getScore();
+    playerType gameover = m_game.gameoverText(); // if Gameover with playerType smartBot then Test successfull 
 
     // Then
-    EXPECT_EQ(score, 0);
+    EXPECT_EQ(gameover, smartBot);
 
 }
-
-TEST_F(GameTest, ScoreIsTenWithOnlyOnesRolls)
-{
-    // Given
-    rollOnlyThisNumber(20,1);
-
-    // When
-    int score = m_game.getScore();
-
-    // Then
-    EXPECT_EQ(score, 20);
-
-}
-/*
-TEST_F(GameTest, ScoreIsTenWithOnlyOnesRolls)
-{
-    // Given
-    rollOnlyThisNumber(20,1);
-
-    // When
-    int score = m_game.getScore();
-
-    // Then
-    EXPECT_EQ(score, 20);
-
-}
-*/
-/*
-TEST_F(GameTest, ScoreIsTenWithOnlyRolls)
-{
-    // Given
-    rollOnlyThisNumber(20,1);
-
-    // When
-    int score = m_game.getScore();
-
-    // Then
-    EXPECT_EQ(score, 20);
-
-}
-*/
