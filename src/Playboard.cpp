@@ -104,6 +104,7 @@ bool Playboard::playboardIsFull()
 // check for 3 identical symbols in a row, vertically and diagonally and if playboard is full
 bool Playboard::ifWon(const Symbol symbol, const int xCord, const int yCord)
 {
+
     return streak(symbol, xCord - 1, yCord, -1, 0) + streak(symbol ,xCord + 1, yCord, 1, 0) >= 2 ||
         streak(symbol, xCord, yCord - 1, 0, -1) + streak(symbol, xCord, yCord + 1, 0, 1) >= 2 ||
         streak(symbol, xCord - 1, yCord - 1, -1, -1) + streak(symbol, xCord + 1, yCord + 1, 1, 1) >= 2 ||
@@ -111,6 +112,7 @@ bool Playboard::ifWon(const Symbol symbol, const int xCord, const int yCord)
 }
 
 // checks if a Player has 2 symbols in a row - so that the smartBot can block
+// not the cleanest solution but it works
 vector<int> Playboard::smartBotBlock(const Symbol symbol, const int xCord, const int yCord)
 {
     bool blockHorizontal {streak(symbol, xCord - 1, yCord, -1, 0) + streak(symbol ,xCord + 1, yCord, 1, 0) >= 1};
@@ -129,7 +131,7 @@ vector<int> Playboard::smartBotBlock(const Symbol symbol, const int xCord, const
 			int blockX = xCord - 1;
 			int blockY = yCord;
 			bool validInput = blockX < m_width && blockX >= 0 && blockY >= 0 && blockY < m_height;
-			//setSymbol(symbol, blockX, blockY);
+			
 			blockCords.insert(blockCords.begin(), blockX);
 			blockCords.insert(blockCords.begin(), blockY);
 
@@ -140,16 +142,98 @@ vector<int> Playboard::smartBotBlock(const Symbol symbol, const int xCord, const
 			int blockX = xCord + 1;
 			int blockY = yCord;
 			bool validInput = blockX < m_width && blockX >= 0 && blockY >= 0 && blockY < m_height;
-			//setSymbol(symbol, blockX, blockY);
+			
 			blockCords.insert(blockCords.begin(), blockX);
 			blockCords.insert(blockCords.begin(), blockY);
 
 			return blockCords;
 		}
-		else
+	}
+	else if (blockVertical)
 		{
+		int blockX;
+		int blockY;
+		if (checkSymbol(symbol, xCord, yCord - 1))
+		{
+			int blockX = xCord;
+			int blockY = yCord - 1;
+			bool validInput = blockX < m_width && blockX >= 0 && blockY >= 0 && blockY < m_height;
+			
+			blockCords.insert(blockCords.begin(), blockX);
+			blockCords.insert(blockCords.begin(), blockY);
+
 			return blockCords;
-		}	
+		}
+		else if (checkSymbol(symbol, xCord, yCord + 1))
+		{
+			int blockX = xCord;
+			int blockY = yCord + 1;
+			bool validInput = blockX < m_width && blockX >= 0 && blockY >= 0 && blockY < m_height;
+			
+			blockCords.insert(blockCords.begin(), blockX);
+			blockCords.insert(blockCords.begin(), blockY);
+
+			return blockCords;
+		}
+	}
+	else if (blockDiag1)
+		{
+		int blockX;
+		int blockY;
+		if (checkSymbol(symbol, xCord - 1, yCord - 1))
+		{
+			int blockX = xCord - 1;
+			int blockY = yCord - 1;
+			bool validInput = blockX < m_width && blockX >= 0 && blockY >= 0 && blockY < m_height;
+			
+			blockCords.insert(blockCords.begin(), blockX);
+			blockCords.insert(blockCords.begin(), blockY);
+
+			return blockCords;
+		}
+		else if (checkSymbol(symbol, xCord + 1, yCord + 1))
+		{
+			int blockX = xCord + 1;
+			int blockY = yCord + 1;
+			bool validInput = blockX < m_width && blockX >= 0 && blockY >= 0 && blockY < m_height;
+			
+			blockCords.insert(blockCords.begin(), blockX);
+			blockCords.insert(blockCords.begin(), blockY);
+
+			return blockCords;
+		}
+	}
+	else if (blockDiag2)
+		{
+		int blockX;
+		int blockY;
+		if (checkSymbol(symbol, xCord - 1, yCord + 1))
+		{
+			int blockX = xCord - 1;
+			int blockY = yCord + 1;
+			bool validInput = blockX < m_width && blockX >= 0 && blockY >= 0 && blockY < m_height;
+			
+			blockCords.insert(blockCords.begin(), blockX);
+			blockCords.insert(blockCords.begin(), blockY);
+
+			return blockCords;
+		}
+		else if (checkSymbol(symbol, xCord - 1, yCord + 1))
+		{
+			int blockX = xCord - 1;
+			int blockY = yCord + 1;
+			bool validInput = blockX < m_width && blockX >= 0 && blockY >= 0 && blockY < m_height;
+			
+			blockCords.insert(blockCords.begin(), blockX);
+			blockCords.insert(blockCords.begin(), blockY);
+
+			return blockCords;
+		}
+	}
+		
+	else
+	{
+		return blockCords;
 	}
 }
 
