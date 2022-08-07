@@ -17,10 +17,10 @@ public:
 
     int countPlayers();
     Modes choosePlayers();
-    int makeMove(Axis, Modes, bool);
+    int makeMove(const Axis, const Modes, const bool);
     void startGame();
     void runningGame(std::list<Player>&);
-    void gameoverText(bool, std::string);
+    void gameoverText(const bool, const std::string);
 
 private:
     int m_gameMode;

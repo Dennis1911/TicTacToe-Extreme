@@ -53,7 +53,7 @@ Modes GameManager::choosePlayers()
 }
 
 // return the x or y coordinates from the different PlayerTypes
-int GameManager::makeMove(Axis axis, Modes mode, bool validMove)
+int GameManager::makeMove(const Axis axis, const Modes mode, const bool validMove)
 {
     int xCord{-1};
     int yCord{-1};
@@ -212,7 +212,7 @@ void GameManager::runningGame(list<Player>& playerList)
     gameoverText(playerHasWon, playerName);
 }
 
-void GameManager::gameoverText(bool playerHasWon, string playerName)
+void GameManager::gameoverText(const bool playerHasWon, const string playerName)
 {
     cout << "Gameover!" << endl;
     if (playerHasWon)
