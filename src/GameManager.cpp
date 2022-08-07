@@ -1,5 +1,6 @@
 #include <iostream>
 #include <list>
+#include <cstdlib>
 
 #include "GameManager.hpp"
 #include "InputHandler.hpp"
@@ -23,30 +24,80 @@ int GameManager::countPlayers()
 // choose which types of players will play
 Modes GameManager::choosePlayers()
 {
-    // cout << "Who should be " << i << "sein?" << endl;
-        string textRequest = "Which type is the next Player?: ";// << stoi(i) << "be?"; // stoi aber nach str??
-        string playerModeStr = InputHandler::getString(textRequest);
-        int playerMode = stoi(playerModeStr);
-        Modes mode;
-        switch (playerMode)
-        {
-        case 1:
-            mode = human;
-            break;
-        case 2:
-            mode = randomBot;
-            break;
-        case 3:
-            mode = smartBot;
-            break;
-        
-        default:
-            cout << "Invalid Input! Only enter numbers between 1 and 3." << endl;
-            choosePlayers();
-            break;
-        }
-        
+    string textRequest = "Which type is the next Player?: ";
+    string playerModeStr = InputHandler::getString(textRequest);
+    int playerMode = stoi(playerModeStr);
+    Modes mode;
+    switch (playerMode)
+    {
+    case 1:
+        mode = human;
+        break;
+    case 2:
+        mode = randomBot;
+        break;
+    case 3:
+        mode = smartBot;
+        break;
+    
+    default:
+        cout << "Invalid Input! Only enter numbers between 1 and 3." << endl;
+        choosePlayers();
+        break;
+    }
+    
     return mode;
+}
+
+// return the x or y coordinates from the different PlayerTypes
+int GameManager::makeMove(Axis axis, Modes mode)
+{
+    int xCord{-1};
+    int yCord{-1};
+    switch (mode)
+    {
+    case human:
+        if (axis == xAxis)
+        {
+            xCord = InputHandler::getIntFromRange("Enter x coordinate: ", 1, 6) - 1; // playboard size
+        }
+        else if(axis == yAxis)
+        {
+            yCord = InputHandler::getIntFromRange("Enter y coordinate: ", 1, 6) - 1; // playboard size
+        }
+        break;
+
+    case randomBot:
+        if (axis == xAxis)
+        {
+            xCord = rand() % 5 + 1; // playboard size - 1 ... ansonsten wegen + 1 zu groß
+        }
+        else if(axis == yAxis)
+        {
+            yCord = rand() % 5 + 1;  
+        }
+        break;
+    
+    case smartBot:
+        if (axis == xAxis)
+        {
+            xCord = 1;
+        }
+        else if(axis == yAxis)
+        {
+            yCord = 1;  
+        }
+        break;
+    
+    }
+    if (axis == xAxis)
+    {
+        return xCord;
+    }
+    else
+    {
+        return yCord;
+    }
 }
 
 // 
@@ -71,7 +122,7 @@ void GameManager::startGame()
         {
         case 1:
             playerName = InputHandler::getString("What is your name?: ");
-            //playerName = playerInit.getPlayerName(); // check for doppeltes vorkommen von Namen
+            //playerName = playerInit.getPlayerName(); // check for doppeltes vorkommen von Namen - for loop in string checkName liefert namen
             break;
         case 2:
             playerName = "Randombot " + to_string(randomBotCount);
@@ -86,7 +137,7 @@ void GameManager::startGame()
         Symbol playerSymbol = Symbol(i - 1);
         player = new Player(gamemode, playerName, playerSymbol);
         
-        playerList.insert(playerList.begin(), *player); // Liste mit allen Spielern
+        playerList.insert(playerList.begin(), *player); // List with all players
     }
     playerList.reverse(); // reverse list so that first named player begins
     runningGame(playerList);
@@ -102,29 +153,30 @@ void GameManager::runningGame(list<Player>& playerList)
     {
         playboard.printPlayboard(playboard);
         list<Player>::iterator it = next( playerList.begin(), currentPlayer);
-        //cout << &it << endl; // wie kann man bei einem iterator auf eine Klasse auf die Inhalte zugreifen??
 
         playerName = it->getPlayerName();
         cout << playerName << " it's your turn:" << endl;
 
         Symbol playerSymbol = it->getPlayerSymbol();
+        Modes playerMode = it->getPlayerType();
 
-        int xCord = InputHandler::getIntFromRange("Enter x coordinate: ", 1, 6) - 1;
-        int yCord = InputHandler::getIntFromRange("Enter y coordinate: ", 1, 6) - 1;
+        // get xCord and yCord from the different PlayerTypes
+        int xCord = makeMove(xAxis, playerMode);
+        int yCord = makeMove(yAxis, playerMode);
 
         // check for valid symbol at cords
+        bool validMove = playboard.checkSymbol(playerSymbol, xCord, yCord);
+
         // place player.symbol at cords
-        if (true) // valid move
+        if (validMove) // valid move
         {
             playboard.setSymbol(playerSymbol, xCord, yCord);
-            //playboard.printPlayboard(playboard);
             gameover = playboard.ifWon(playerSymbol, xCord, yCord); // der müsste gerade eigentlich nach dem ersten Zug schon true zurück geben.. kommt aber nichts
             currentPlayer++;
         }
         else
         {
             cout << "This field is full. Place elsewhere." << endl;
-            currentPlayer--;
         }
     
     if (currentPlayer >= playerList.size()) // loop through the list from the beginning

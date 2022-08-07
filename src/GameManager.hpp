@@ -5,6 +5,7 @@
 
 #include "Player.hpp"
 
+enum Axis {xAxis, yAxis};
 
 class GameManager
 {
@@ -15,6 +16,7 @@ public:
 
     int countPlayers();
     Modes choosePlayers();
+    int makeMove(Axis, Modes);
     void startGame();
     void runningGame(std::list<Player>&);
 

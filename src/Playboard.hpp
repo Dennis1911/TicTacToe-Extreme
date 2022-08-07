@@ -30,7 +30,8 @@ public:
         this->m_field = create.m_field;
     };
 */
-    int setSymbol(const Symbol symbol, const int xVal, const int yVal);
+    bool checkSymbol(const Symbol symbol, const int xVal, const int yVal);
+    void setSymbol(const Symbol symbol, const int xVal, const int yVal);
 
     void printPlayboard(const Playboard& playboard);
     int getWidth();

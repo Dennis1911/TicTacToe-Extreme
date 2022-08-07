@@ -18,6 +18,11 @@ Symbol Player::getPlayerSymbol()
     return m_playerSymbol;
 }
 
+Modes Player::getPlayerType()
+{
+    return m_playerType;
+}
+
 string Player::setPlayerSymbol() // hier rather Symbol übergeben und dann vllt hier die String conversion machen?
 {
     

@@ -6,11 +6,18 @@
 using namespace std;
 
 
+bool Playboard::checkSymbol(const Symbol symbol, const int xVal, const int yVal)
+{
+    if(m_field.at(xVal).at(yVal) == none)
+	{
+		return true;
+	}
+	return false;
+}
 
-int Playboard::setSymbol(const Symbol symbol, const int xVal, const int yVal)
+void Playboard::setSymbol(const Symbol symbol, const int xVal, const int yVal)
 {
     m_field.at(xVal).at(yVal) = symbol;
-
 }
 
 std::vector<std::vector<Symbol>> Playboard::getPlayboard() const
