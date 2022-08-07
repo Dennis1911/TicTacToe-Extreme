@@ -1,5 +1,6 @@
 #pragma once
 #include <string>
+#include <vector>
 
 #include "enum.hpp"
 // #include "GameManager.hpp"
@@ -25,6 +26,7 @@ public:
     std::string getPlayerName();
     std::string setPlayerSymbol();
     Symbol getPlayerSymbol();
+    std::vector<std::vector<int>> smartBotMove(); //
     
 
 private:

@@ -1,6 +1,9 @@
 #include <iostream>
 #include <list>
+#include <random>
 #include <cstdlib>
+#include <ctime>
+
 
 #include "GameManager.hpp"
 #include "InputHandler.hpp"
@@ -50,7 +53,7 @@ Modes GameManager::choosePlayers()
 }
 
 // return the x or y coordinates from the different PlayerTypes
-int GameManager::makeMove(Axis axis, Modes mode)
+int GameManager::makeMove(Axis axis, Modes mode, bool validMove)
 {
     int xCord{-1};
     int yCord{-1};
@@ -70,25 +73,40 @@ int GameManager::makeMove(Axis axis, Modes mode)
     case randomBot:
         if (axis == xAxis)
         {
-            xCord = rand() % 5 + 1; // playboard size - 1 ... ansonsten wegen + 1 zu groß
+            xCord = rand() % 6; // playboard size - 1 ... ansonsten wegen + 1 zu groß
         }
         else if(axis == yAxis)
         {
-            yCord = rand() % 5 + 1;  
+            yCord = rand() % 6;  
         }
         break;
     
     case smartBot:
+
         if (axis == xAxis)
         {
-            xCord = 1;
+            if (m_blockCords.empty() || validMove == false)
+            {
+                 xCord = rand() % 6;
+            }
+            else
+            {
+                xCord = m_blockCords.at(1);
+            }
+            
         }
         else if(axis == yAxis)
         {
-            yCord = 1;  
-        }
+            if (m_blockCords.empty() || validMove == false)
+            {
+               yCord = rand() % 6;
+            }
+            else
+            {
+                yCord = m_blockCords.at(0);
+            }
         break;
-    
+    }
     }
     if (axis == xAxis)
     {
@@ -108,6 +126,7 @@ void GameManager::startGame()
     int playerCount = countPlayers();
     int randomBotCount{1};
     int smartBotCount{1};
+    srand(time(0)); // for better random numbers
     cout << "Human: 1" << endl;
     cout << "SmartBot: 2" << endl;
     cout << "RandomBot: 3" << endl;
@@ -146,9 +165,11 @@ void GameManager::startGame()
 void GameManager::runningGame(list<Player>& playerList)
 {
     Playboard playboard(6,6);
-    bool gameover = false;
-    int currentPlayer = 0;
+    bool gameover{false};
+    int currentPlayer{0};
     string playerName;
+    bool validMove{true};
+    bool playerHasWon{false};
     do
     {
         playboard.printPlayboard(playboard);
@@ -161,17 +182,19 @@ void GameManager::runningGame(list<Player>& playerList)
         Modes playerMode = it->getPlayerType();
 
         // get xCord and yCord from the different PlayerTypes
-        int xCord = makeMove(xAxis, playerMode);
-        int yCord = makeMove(yAxis, playerMode);
+        int xCord = makeMove(xAxis, playerMode, validMove);
+        int yCord = makeMove(yAxis, playerMode, validMove);
 
         // check for valid symbol at cords
-        bool validMove = playboard.checkSymbol(playerSymbol, xCord, yCord);
+        validMove = playboard.checkSymbol(playerSymbol, xCord, yCord);
 
         // place player.symbol at cords
-        if (validMove) // valid move
+        if (validMove)
         {
             playboard.setSymbol(playerSymbol, xCord, yCord);
-            gameover = playboard.ifWon(playerSymbol, xCord, yCord); // der müsste gerade eigentlich nach dem ersten Zug schon true zurück geben.. kommt aber nichts
+            playerHasWon = playboard.ifWon(playerSymbol, xCord, yCord);
+            gameover = playerHasWon || playboard.playboardIsFull();
+            m_blockCords = playboard.smartBotBlock(playerSymbol, xCord, yCord);
             currentPlayer++;
         }
         else
@@ -185,6 +208,22 @@ void GameManager::runningGame(list<Player>& playerList)
     }
     } while (gameover == false); 
     playboard.printPlayboard(playboard);
-    cout << "GameOver!" << " Player: " << playerName << " has won!" << endl;
+
+    gameoverText(playerHasWon, playerName);
+    
+}
+
+void GameManager::gameoverText(bool playerHasWon, string playerName)
+{
+    cout << "Gameover!" << endl;
+    if (playerHasWon)
+    {
+        cout << playerName << " is the winner!" << endl;
+    }
+    else
+    {
+        cout << "No winner, the playboard is full." << endl;
+    }
+    
     
 }

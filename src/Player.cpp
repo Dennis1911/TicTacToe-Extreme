@@ -29,3 +29,15 @@ string Player::setPlayerSymbol() // hier rather Symbol übergeben und dann vllt 
     string m_playerSymbol = "Symbols[1]";
     return m_playerSymbol;
 }
+
+/*
+vector<int> smartBotMove()
+{
+    vector<int> cords;
+    if (smartBotBlock(const Symbol symbol, const int xCord, const int yCord))
+    {
+        return cords;
+    }
+    
+}
+*/
