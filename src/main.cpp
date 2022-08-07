@@ -6,5 +6,3 @@ int main(int argc, char const *argv[])
     gameManager.startGame();
     return 0;
 }
-
-// gcc 
